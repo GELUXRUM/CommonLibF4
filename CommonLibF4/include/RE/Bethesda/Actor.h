@@ -832,8 +832,7 @@ namespace RE
 		virtual ObjectRefHandle DropObject(const BGSObjectInstance& a_object, BSTSmallArray<std::uint32_t, 4>* a_stackData, std::int32_t a_number, const NiPoint3* a_point, const NiPoint3* a_rotate);   // 0EB
 		virtual void PickUpObject(TESObjectREFR* a_objREFR, std::int32_t a_count, bool a_playPickUpSounds);                                                                                              // 0EC
 		virtual void AttachArrow(const BSTSmartPointer<BipedAnim>& a_biped, BGSEquipIndex a_equipIndex);                                                                                                 // 0ED
-		virtual void DetachArrow(const BSTSmartPointer<BipedAnim>& a_biped, BGSEquipIndex a_equipIndex);                                                                                                 // 0EE
-		virtual bool ReloadWeapon(const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, BGSEquipIndex a_equipIndex);                                                                                        // 0EF
+		virtual void DetachArrow(const BSTSmartPointer<BipedAnim>& a_biped, BGSEquipIndex a_equipIndex);                                                                                                 // 0EE                                                                                   // 0EF
 		virtual std::uint32_t UseAmmo(const BGSObjectInstanceT<TESObjectWEAP>& a_weapon, BGSEquipIndex a_equipIndex, std::uint32_t a_shotCount);                                                         // 0F0
 		virtual bool CalculateCachedOwnerIsInCombatantFaction() const;                                                                                                                                   // 0F1
 		virtual CombatGroup* GetCombatGroup() const;                                                                                                                                                     // 0F2
@@ -1082,6 +1081,14 @@ namespace RE
 			using func_t = decltype(&Actor::IsFollowing);
 			REL::Relocation<func_t> func{ REL::ID(629579) };
 			return func(this);
+		}
+		
+		bool ReloadWeapon(const RE::EquippedItem& a_weapon, BGSEquipIndex a_equipIndex) 
+		{
+			using func_t = decltype(&Actor::ReloadWeapon);
+			REL::Relocation<func_t> func{ REL::ID(1174629) };
+			
+			return func(this, a_weapon, a_equipIndex);
 		}
 
 		bool IsPathValid()
