@@ -27,6 +27,13 @@ namespace RE
 		virtual void UpdateWorldBound() override;                               // 33
 		virtual void UpdateWorldData(NiUpdateData* a_data) override;            // 34
 
+		void ViewPointToRay(float a_1, float a_2, NiPoint3& a_location, NiPoint3& a_aimVector)
+		{
+			using func_t = decltype(&NiCamera::ViewPointToRay);
+			REL::Relocation<func_t> func{ REL::ID(460613) };
+			return func(this, a_1, a_2, a_location, a_aimVector);
+		}
+
 		// members
 		float worldToCam[4][4];  // 120
 		NiFrustum viewFrustum;   // 160

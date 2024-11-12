@@ -1032,6 +1032,13 @@ namespace RE
 			return func(this, a_charge);
 		}
 
+		TESRace* GetPowerArmorRace()
+		{
+			using func_t = decltype(&ExtraDataList::GetPowerArmorRace);
+			REL::Relocation<func_t> func{ REL::ID(1564080) };
+			return func(this);
+		}
+
 		// members
 		BaseExtraList extraData;              // 08
 		mutable BSReadWriteLock extraRWLock;  // 20

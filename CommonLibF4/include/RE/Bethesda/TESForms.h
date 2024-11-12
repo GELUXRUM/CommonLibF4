@@ -1991,21 +1991,21 @@ namespace RE
 	class __declspec(novtable) BGSBodyPart
 	{
 	public:
-		BSFixedString PartNode;               //00
-		BSFixedString VATSTarget;             //08
-		BSFixedString TwistVariation;         //10
-		BSFixedString HitReactionStart;       //18
-		BSFixedString HitReactionEnd;         //20
-		BSFixedString TwistVariationX;        //28
-		BSFixedString TwistVariationY;        //30
-		BSFixedString TwistVariationZ;        //38
-		BSFixedString unk40;                  //40
-		BSFixedString GoreEffectsTargetBone;  //48
-		void* TESModelVTable;                 //50
-		BSFixedString LimbReplacementModel;   //58
-		void* TextureFileHashes;              //60
-		void* MaterialRelated;                //68
-		uint64_t unk70;                       //70
+		BSFixedString PartNode;               // 00
+		BSFixedString VATSTarget;             // 08
+		BSFixedString TwistVariation;         // 10
+		BSFixedString HitReactionStart;       // 18
+		BSFixedString HitReactionEnd;         // 20
+		BSFixedString TwistVariationX;        // 28
+		BSFixedString TwistVariationY;        // 30
+		BSFixedString TwistVariationZ;        // 38
+		BGSLocalizedString PartName;          // 40
+		BSFixedString GoreEffectsTargetBone;  // 48
+		void* TESModelVTable;                 // 50
+		BSFixedString LimbReplacementModel;   // 58
+		void* TextureFileHashes;              // 60
+		void* MaterialRelated;                // 68
+		uint64_t unk70;                       // 70
 	};
 
 	class __declspec(novtable) BGSBodyPartData :

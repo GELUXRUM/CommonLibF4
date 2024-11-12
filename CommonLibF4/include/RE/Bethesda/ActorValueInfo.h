@@ -100,7 +100,7 @@ namespace RE
 		ActorValueInfo* karma;                              // 110
 		ActorValueInfo* leftAttackCondition;                // 118
 		ActorValueInfo* leftItemCharge;                     // 120
-		ActorValueInfo* leftMobiltyCondition;               // 128
+		ActorValueInfo* leftMobilityCondition;              // 128
 		ActorValueInfo* leftWeaponSpeedMult;                // 130
 		ActorValueInfo* lockpicking;                        // 138
 		ActorValueInfo* luck;                               // 140

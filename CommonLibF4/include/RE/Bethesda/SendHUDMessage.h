@@ -31,5 +31,12 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(1163005) };
 			return func(a_message, a_sound, a_throttle, a_warning);
 		}
+
+		inline void SendFlashMeterMessage(RE::ActorValueInfo& a_actorValueInfo)
+		{
+			using func_t = decltype(&SendHUDMessage::SendFlashMeterMessage);
+			REL::Relocation<func_t> func{ REL::ID(244187) };
+			return func(a_actorValueInfo);
+		}
 	}
 }

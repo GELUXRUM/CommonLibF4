@@ -22,11 +22,11 @@ namespace RE
 
 	namespace CombatUtilities
 	{
-		inline bool CalculateProjectileTrajectory(const NiPoint3& pos, const NiPoint3& vel, float gravity, const NiPoint3& targetPos, float X, NiPoint3& out)
+		inline bool CalculateProjectileTrajectory(const NiPoint3& a_position, const NiPoint3& a_velocity, float a_gravity, const NiPoint3& a_targetPosition, float a_x, NiPoint3& a_out)
 		{
 			using func_t = decltype(&CalculateProjectileTrajectory);
 			REL::Relocation<func_t> func{ REL::ID(1575156) };
-			return func(pos, vel, gravity, targetPos, X, out);
+			return func(a_position, a_velocity, a_gravity, a_targetPosition, a_x, a_out);
 		}
 
 		inline bool CalculateProjectileLOS(Actor* a, BGSProjectile* proj, float speed, const NiPoint3& launchPos, const NiPoint3& targetPos, NiPoint3* hitPos, TESObjectREFR** collidee, float* dist)
@@ -36,12 +36,20 @@ namespace RE
 			return func(a, proj, speed, launchPos, targetPos, hitPos, collidee, dist);
 		}
 
-		inline bool CalculateProjectileLOS(Actor* a, BGSProjectile* proj, bhkPickData& pick)
+		inline bool CalculateProjectileLOS(Actor* a_actor, BGSProjectile* a_projectile, bhkPickData& a_pickData)
 		{
 			typedef bool func_t(Actor*, BGSProjectile*, bhkPickData&);
 			REL::Relocation<func_t> func{ REL::ID(55339) };
-			return func(a, proj, pick);
+			return func(a_actor, a_projectile, a_pickData);
 		}
+
+		inline bool IsActorUsingUnarmed(Actor* a_actor)
+		{
+			using func_t = decltype(&IsActorUsingUnarmed);
+			REL::Relocation<func_t> func{ REL::ID(1483696) };
+			return func(a_actor);
+		}
+
 		static REL::Relocation<float> fWorldGravity{ REL::ID(1378547) };
 	};
 
@@ -104,6 +112,29 @@ namespace RE
 			using func_t = decltype(&QueryStat);
 			REL::Relocation<func_t> func{ REL::ID(1315743) };
 			return func(a_statName, a_statValue);
+		}
+	}
+
+	namespace ScreenShot
+	{
+		enum TextureFileFormat : __int32
+		{
+			TEXTURE_FILE_FORMAT_BMP = 0x0,
+			TEXTURE_FILE_FORMAT_JPG = 0x1,
+			TEXTURE_FILE_FORMAT_TGA = 0x2,
+			TEXTURE_FILE_FORMAT_PNG = 0x3,
+			TEXTURE_FILE_FORMAT_DDS = 0x4,
+			TEXTURE_FILE_FORMAT_PPM = 0x5,
+			TEXTURE_FILE_FORMAT_DIB = 0x6,
+			TEXTURE_FILE_FORMAT_HDR = 0x7,
+			TEXTURE_FILE_FORMAT_PFM = 0x8,
+		};
+
+		inline void TakeScreenShot(char* a_source, enum TextureFileFormat a_format, int a_renderTargetID)
+		{
+			using func_t = decltype(&TakeScreenShot);
+			REL::Relocation<func_t> func{ REL::ID(919230) };
+			return func(a_source, a_format, a_renderTargetID);
 		}
 	}
 }

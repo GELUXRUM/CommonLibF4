@@ -29,7 +29,6 @@ namespace RE
 	struct ReadyWeaponHandler;
 	struct RunHandler;
 	struct SneakHandler;
-	struct SprintHandler;
 	struct TESFurnitureEvent;
 	struct TogglePOVHandler;
 	struct ToggleRunHandler;
@@ -139,6 +138,18 @@ namespace RE
 	};
 	static_assert(sizeof(HeldStateHandler) == 0x28);
 
+	class SprintHandler :
+		public HeldStateHandler // 00
+	{
+	public:
+		static constexpr auto RTTI{ RTTI::SprintHandler };
+		static constexpr auto VTABLE{ VTABLE::SprintHandler};
+
+		// add
+		virtual void HandleEvent(const ButtonEvent* a_event);
+	};
+	static_assert(sizeof(SprintHandler) == 0x28);
+
 	class __declspec(novtable) PlayerControls :
 		BSInputEventReceiver,                    // 000
 		BSTEventSink<MenuOpenCloseEvent>,        // 010
@@ -171,6 +182,13 @@ namespace RE
 			using func_t = decltype(&PlayerControls::DoAction);
 			REL::Relocation<func_t> func{ REL::ID(818081) };
 			return func(this, a_action, a_priority);
+		}
+
+		void GetControllerOutput(unsigned int a_formID, PlayerControlsMovementData* a_data)
+		{
+			using func_t = decltype(&PlayerControls::GetControllerOutput);
+			REL::Relocation<func_t> func{ REL::ID(394564) };
+			return func(this, a_formID, a_data);
 		}
 
 		void RegisterHandler(PlayerInputHandler* a_handler) { DoRegisterHandler(a_handler, false); }

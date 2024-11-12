@@ -52,5 +52,12 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(880926) };
 			return func(a_lockLevel);
 		}
+
+		inline float CalcSprintingActionPoints(float a_equippedWeight, float a_frameDelta, float a_endurance)
+		{
+			using func_t = decltype(&GamePlayFormulas::CalcSprintingActionPoints);
+			REL::Relocation<func_t> func{ REL::ID(1053786) };
+			return func(a_equippedWeight, a_frameDelta, a_endurance);
+		}
 	}
 }

@@ -42,5 +42,19 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(211411) };
 			return func(a_actor);
 		}
+
+		[[nodiscard]] inline std::int64_t GetNumCrippledAttackConditions(Actor* a_actor)
+		{
+			using func_t = decltype(&CombatFormulas::GetNumCrippledAttackConditions);
+			REL::Relocation<func_t> func{ REL::ID(170270) };
+			return func(a_actor);
+		}
+
+		[[nodiscard]] inline float CalcScopeSteadyActionPointDrain(Actor* a_actor, float a_unk)
+		{
+			using func_t = decltype(&CombatFormulas::CalcScopeSteadyActionPointDrain);
+			REL::Relocation<func_t> func{ REL::ID(380926) };
+			return func(a_actor, a_unk);
+		}
 	}
 }

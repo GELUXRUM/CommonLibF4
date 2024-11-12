@@ -241,6 +241,13 @@ namespace RE
 			return func(this, a_formID);
 		}
 
+		void UpdateAutoCalcNPCs()
+		{
+			using func_t = decltype(&TESDataHandler::UpdateAutoCalcNPCs);
+			REL::Relocation<func_t> func{ REL::ID(1051990) };
+			return func(this);
+		}
+
 		// members
 		TESObjectList* objectList;                                                // 0060
 		BSTArray<TESForm*> formArrays[stl::to_underlying(ENUM_FORM_ID::kTotal)];  // 0068

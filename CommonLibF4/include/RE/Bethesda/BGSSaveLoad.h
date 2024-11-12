@@ -97,21 +97,22 @@ namespace RE
 			return func(this, a_fileName);
 		}
 
-		char FileNameA[260];
-		_FILETIME CreationTimestamp;
-		std::uint64_t PlayerLevel;
-		std::uint32_t FilenameVersion;
-		std::uint32_t SaveGameNumber;
-		std::uint64_t PlayerID;
-		BSStringT<char> PlayerName;
-		BSStringT<char> PlayerLocID;
-		BSStringT<char> PlayTime;
-		bool IsValid;
-		bool HasSaveNumber;
-		bool NeedsSync;
-		bool Modded;
-		bool Survival;
+		char fileNameA[260];            // 000
+		_FILETIME creationTimestamp;    // 104
+		std::uint64_t playerLevel;      // 10C
+		std::uint32_t filenameVersion;  // 114
+		std::uint32_t saveGameNumber;   // 118
+		std::uint64_t playerID;         // 11C
+		BSStringT<char> playerName;     // 124
+		BSStringT<char> playerLocID;    // 134
+		BSStringT<char> playTime;       // 144
+		bool isValid;                   // 154
+		bool hasSaveNumber;             // 155
+		bool needsSync;                 // 156
+		bool modded;                    // 157
+		bool survival;                  // 158
 	};
+	static_assert(sizeof(SavefileMetadata) == 0x160);
 
 	class BGSSaveLoadFileEntry
 	{

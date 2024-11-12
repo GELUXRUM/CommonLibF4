@@ -59,7 +59,7 @@ namespace RE
 			return func(a_itemData);
 		}
 
-		inline bool PlaySoundAtPlayer(BGSSoundDescriptorForm* a_soundDescriptor)
+		inline void PlaySoundAtPlayer(BGSSoundDescriptorForm* a_soundDescriptor)
 		{
 			using func_t = decltype(&PlaySoundAtPlayer);
 			REL::Relocation<func_t> func{ REL::ID(994664) };
@@ -71,6 +71,13 @@ namespace RE
 			using func_t = decltype(&SyncFurnitureVisualsToInventory);
 			REL::Relocation<func_t> func{ REL::ID(1078979) };
 			return func(a_furniture, a_force3DUpdate, a_tempItemToAdd, a_hideCore);
+		}
+
+		inline bool QActorInPowerArmor(Actor* a_actor)
+		{
+			using func_t = decltype(&QActorInPowerArmor);
+			REL::Relocation<func_t> func{ REL::ID(1176757) };
+			return func(a_actor);
 		}
 
 		inline REL::Relocation<SettingT<GameSettingCollection>*> fNewBatteryCapacity{ REL::ID(1134204) };

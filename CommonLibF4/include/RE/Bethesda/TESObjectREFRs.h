@@ -891,21 +891,21 @@ namespace RE
 
 		void UpdateDynamicNavmesh(bool a_active)
 		{
-			using func_t = decltype(&RE::TESObjectREFR::UpdateDynamicNavmesh);
+			using func_t = decltype(&TESObjectREFR::UpdateDynamicNavmesh);
 			REL::Relocation<func_t> func{ REL::ID(1518094) };
 			return func(this, a_active);
 		}
 
 		bool WornHasKeyword(BGSKeyword* a_keyword)
 		{
-			using func_t = decltype(&RE::TESObjectREFR::WornHasKeyword);
+			using func_t = decltype(&TESObjectREFR::WornHasKeyword);
 			REL::Relocation<func_t> func{ REL::ID(900857) };
 			return func(this, a_keyword);
 		}
 
 		MapMarkerData* GetMapMarkerData()
 		{
-			using func_t = decltype(&RE::TESObjectREFR::GetMapMarkerData);
+			using func_t = decltype(&TESObjectREFR::GetMapMarkerData);
 			REL::Relocation<func_t> func{ REL::ID(253640) };
 			return func(this);
 			
@@ -913,10 +913,36 @@ namespace RE
 
 		char* GetDisplayFullName()
 		{
-			using func_t = decltype(&RE::TESObjectREFR::GetDisplayFullName);
+			using func_t = decltype(&TESObjectREFR::GetDisplayFullName);
 			REL::Relocation<func_t> func{ REL::ID(1212056) };
 			return func(this);
 		}
+
+		static TESObjectREFR* FindReferenceFor3D(NiAVObject* a_object3D)
+		{
+			using func_t = decltype(&TESObjectREFR::FindReferenceFor3D);
+			REL::Relocation<func_t> func{ REL::ID(766937) };
+			return func(a_object3D);
+		}
+
+		/*
+		void CreateDetectionEventAtRef(TESObjectREFR* a_locationRef, Actor* a_actor, int a_soundLevel)
+		{
+			if (a_actor && a_actor->currentProcess) {
+				NiPoint3 objectCenter;
+				a_locationRef->GetObjectCenter(objectCenter);
+
+				a_actor->currentProcess->SetActorsDetectionEvent(a_actor, objectCenter, a_soundLevel, a_locationRef);
+			}
+		}
+
+		void CreateDetectionEventAtLocation(NiPoint3 a_location, Actor* a_actor, int a_soundLevel)
+		{
+			if (a_actor && a_actor->currentProcess) {
+				a_actor->currentProcess->SetActorsDetectionEvent(a_actor, a_location, a_soundLevel, nullptr);
+			}
+		}
+		*/
 
 		// members
 		TESObjectCELL* parentCell;                 // 0B8

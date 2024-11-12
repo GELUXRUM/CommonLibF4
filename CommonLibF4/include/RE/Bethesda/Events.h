@@ -1,5 +1,6 @@
 #pragma once
 
+#include "RE/Bethesda/Actor.h"
 #include "RE/Bethesda/BSFixedString.h"
 #include "RE/Bethesda/BSPointerHandle.h"
 #include "RE/Bethesda/BSTArray.h"
@@ -19,6 +20,30 @@ namespace RE
 	class TESObjectREFR;
 
 	struct InventoryUserUIInterfaceEntry;
+
+	struct BGSOnPlayerFireWeaponEvent
+	{
+	public:
+		[[nodiscard]] static BSTEventSource<BGSOnPlayerFireWeaponEvent>* GetEventSource()
+		{
+			using func_t = decltype(&BGSOnPlayerFireWeaponEvent::GetEventSource);
+			REL::Relocation<func_t> func{ REL::ID(594318) };
+			return func();
+		}
+
+		// members
+		TESBoundObject* object;   // 00
+	};
+
+	class BGSOnPlayerFireWeaponEventSource : public BSTEventSource<BGSOnPlayerFireWeaponEvent>
+	{
+	public:
+		[[nodiscard]] static BGSOnPlayerFireWeaponEventSource* GetSingleton()
+		{
+			REL::Relocation<BGSOnPlayerFireWeaponEventSource*> singleton{ REL::ID(1288284) };
+			return singleton.get();
+		}
+	};
 
 	struct BSThreadEvent
 	{
@@ -123,6 +148,46 @@ namespace RE
 		}
 	};
 	static_assert(sizeof(CurrentRadiationSourceCount) == 0x08);
+
+	struct ViewCasterData
+	{
+	public:
+		ObjectRefHandle activatePickRef;		// 00
+		ObjectRefHandle magnetismRef;			// 04
+		ObjectRefHandle telekinesisPickRef;		// 08
+		ObjectRefHandle dialoguePickRef;		// 0C
+		NiAVObject* avObject;					// 10
+		NiAVObject* shapeCastAVObject;			// 18
+		uint32_t collisionGroup;				// 20
+	};
+	static_assert(sizeof(ViewCasterData) == 0x28);
+
+	struct ViewCasterUpdateData
+	{
+	public:
+		ViewCasterData currentVCData;				// 00
+		bool playerShouldActivate;					// 28
+		BSTOptional<LIFE_STATE> actorLifeState;		// 2C
+	};
+	static_assert(sizeof(ViewCasterUpdateData) == 0x38);
+
+	class ViewCasterUpdateEvent :
+		public BSTValueEvent<ViewCasterUpdateData> // 00
+	{
+	private:
+		using EventSource_t = BSTGlobalEvent::EventSource<ViewCasterUpdateEvent>;
+
+	public:
+		[[nodiscard]] static EventSource_t* GetEventSource()
+		{
+			REL::Relocation<EventSource_t**> singleton{ REL::ID(1316981) };
+			if (!*singleton) {
+				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+			}
+			return *singleton;
+		}
+	};
+	static_assert(sizeof(ViewCasterUpdateEvent) == 0x40);
 
 	struct ColorUpdateEvent
 	{
@@ -549,6 +614,36 @@ namespace RE
 		}
 	};
 	static_assert(std::is_empty_v<UIAdvanceMenusFunctionCompleteEvent>);
+
+	struct HUDEnemyHealthDisplayData
+	{
+	public:
+		BSFixedString targetName;
+		float enemyHealth;
+		float backgroundHealth;
+		bool useHUDWarningColor;
+		bool showLegendaryIcon;
+		bool showSkullIcon;
+	};
+	static_assert(sizeof(HUDEnemyHealthDisplayData) == 0x18);
+
+	class HUDEnemyHealthDisplayEvent :
+		public BSTValueEvent<HUDEnemyHealthDisplayData>
+	{
+	private:
+		using EventSource_t = BSTGlobalEvent::EventSource<HUDEnemyHealthDisplayEvent>;
+
+	public:
+		[[nodiscard]] static EventSource_t* GetEventSource()
+		{
+			REL::Relocation<EventSource_t**> singleton{ REL::ID(1280504) };
+			if (!*singleton) {
+				*singleton = new EventSource_t(&BSTGlobalEvent::GetSingleton()->eventSourceSDMKiller);
+			}
+			return *singleton;
+		}
+	};
+	static_assert(sizeof(HUDEnemyHealthDisplayEvent) == 0x20);
 
 	class UserEventEnabledEvent
 	{

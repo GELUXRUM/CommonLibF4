@@ -245,13 +245,37 @@ namespace RE
 	class __declspec(novtable) AimModel
 	{
 	public:
+		void ApplyShotRecoil()
+		{
+			using func_t = decltype(&AimModel::ApplyShotRecoil);
+			REL::Relocation<func_t> func{ REL::ID(369173) };
+			return func(this);
+		}
+		
+		float GetFireConeRadius()
+		{
+			using func_t = decltype(&AimModel::GetFireConeRadius);
+			REL::Relocation<func_t> func{ REL::ID(300337) };
+			return func(this);
+		}
+
+		void GetFireConeRadiusExtents(float& a_fAimModelFireConeAngleMaxRad, float& a_fAimModelFireConeAngleMinRad)
+		{
+			using func_t = decltype(&AimModel::GetFireConeRadiusExtents);
+			REL::Relocation<func_t> func{ REL::ID(1391756) };
+			return func(this, a_fAimModelFireConeAngleMaxRad, a_fAimModelFireConeAngleMinRad);
+		}
+
+
+
+		// members
 		BGSAimModel::Data aimModelData;							// 00
 		BSSpring::SpringState<NiPoint2> recoilSpring;			// 40
 		BSSpring::SpringState<NiPoint2> recoilDiminishSpring;	// 54
-		NiPoint2 TargetRecoilRad;								// 68
-		NiPoint2 CurrentRecoilRad;								// 70
-		NiPoint2 PrevRecoilRad;									// 78
-		NiPoint2 PreShotAimRad;									// 80
+		NiPoint2 targetRecoilRad;								// 68
+		NiPoint2 currentRecoilRad;								// 70
+		NiPoint2 prevRecoilRad;									// 78
+		NiPoint2 preShotAimRad;									// 80
 		Actor* actor;											// 88
 		float fireConeSize;										// 90
 		float lastShotDeltaMs;									// 94
@@ -610,6 +634,55 @@ namespace RE
 			return func(this);
 		}
 
+		BSTArray<EquippedItem*> GetEquippedItemArray()
+		{
+			using func_t = decltype(&AIProcess::GetEquippedItemArray);
+			REL::Relocation<func_t> func{ REL::ID(421579) };
+			return func(this);
+		}
+
+		void ResetEyeTracking(Actor* a_actor, NiPoint2* a_unk)
+		{
+			using func_t = decltype(&AIProcess::ResetEyeTracking);
+			REL::Relocation<func_t> func{ REL::ID(51794) };
+			return func(this, a_actor, a_unk);
+		}
+
+		TESObjectCELL* GetCurrentDestinationCell(Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::GetCurrentDestinationCell);
+			REL::Relocation<func_t> func{ REL::ID(645287) };
+			return func(this, a_actor);
+		}
+
+		NiPoint3* GetCurrentDestinationCoordinate(Actor* a_actor, NiPoint3& a_return, bool a_unk)
+		{
+			using func_t = decltype(&AIProcess::GetCurrentDestinationCoordinate);
+			REL::Relocation<func_t> func{ REL::ID(606975) };
+			return func(this, a_actor, a_return, a_unk);
+		}
+
+		float GetCurrentDestinationRadius(Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::GetCurrentDestinationRadius);
+			REL::Relocation<func_t> func{ REL::ID(603896) };
+			return func(this, a_actor);
+		}
+
+		TESObjectREFR* GetCurrentDestinationReference(Actor* a_actor, bool a_unk)
+		{
+			using func_t = decltype(&AIProcess::GetCurrentDestinationReference);
+			REL::Relocation<func_t> func{ REL::ID(914062) };
+			return func(this, a_actor, a_unk);
+		}
+
+		TESWorldSpace* GetCurrentDestinationWorldSpace(Actor* a_actor)
+		{
+			using func_t = decltype(&AIProcess::GetCurrentDestinationWorldSpace);
+			REL::Relocation<func_t> func{ REL::ID(1415341) };
+			return func(this, a_actor);
+		}
+
 		// members
 		MiddleLowProcessData* middleLow;                    // 00
 		MiddleHighProcessData* middleHigh;                  // 08
@@ -757,6 +830,21 @@ namespace RE
 
 		[[nodiscard]] bool GetWeaponMagicDrawn() const noexcept { return weaponState >= WEAPON_STATE::kDrawn; }
 
+		bool DoSetMoveModeBits(uint16_t a_bits)
+		{
+			using func_t = decltype(&ActorState::DoSetMoveModeBits);
+			REL::Relocation<func_t> func{ REL::ID(1074248) };
+			return func(this, a_bits);
+		}
+
+		bool DoGetMoveModeBits(uint16_t a_bits)
+		{
+			using func_t = decltype(&ActorState::DoGetMoveModeBits);
+			REL::Relocation<func_t> func{ REL::ID(980808) };
+			return func(this, a_bits);
+		}
+		
+
 		// members
 		std::uint32_t moveMode: 14;             // 08:00
 		std::uint32_t flyState: 3;              // 08:14
@@ -880,6 +968,14 @@ namespace RE
 			kNormal = 3,
 			kHigh = 4,
 			kCritical = 5
+		};
+
+		enum class SEX : std::uint32_t
+		{
+			SEX_NONE = 0xFFFFFFFF,
+			SEX_MALE = 0x0,
+			SEX_FEMALE = 0x1,
+			SEX_COUNT = 0x2,
 		};
 
 		// add
@@ -1264,6 +1360,91 @@ namespace RE
 			REL::Relocation<func_t> func{ REL::ID(1210102) };
 			return func(this, a_disarmer);
 		}
+
+		void StopSprinting()
+		{
+			using func_t = decltype(&Actor::StopSprinting);
+			REL::Relocation<func_t> func{ REL::ID(298499) };
+			return func(this);
+		}
+
+		bool StartCombat(Actor* a_target, Actor* a_unk)
+		{
+			using func_t = decltype(&Actor::StartCombat);
+			REL::Relocation<func_t> func{ REL::ID(765218) };
+			return func(this, a_target, a_unk);
+		}
+
+		uint8_t GetMobilityCrippled()
+		{
+			using func_t = decltype(&Actor::GetMobilityCrippled);
+			REL::Relocation<func_t> func{ REL::ID(281477) };
+			return func(this);
+		}
+
+		bool ComputeCurrentMaxSpeeds(Movement::MaxSpeeds& a_maxSpeeds)
+		{
+			using func_t = decltype(&Actor::ComputeCurrentMaxSpeeds);
+			REL::Relocation<func_t> func{ REL::ID(30004) };
+			return func(this, a_maxSpeeds);
+		}
+		
+		void ForceUpdateCachedMovementType()
+		{
+			using func_t = decltype(&Actor::ForceUpdateCachedMovementType);
+			REL::Relocation<func_t> func{ REL::ID(496525) };
+			return func(this);
+		}
+
+		void UpdateSprinting()
+		{
+			using func_t = decltype(&Actor::UpdateSprinting);
+			REL::Relocation<func_t> func{ REL::ID(385539) };
+			return func(this);
+		}
+
+		BGSMovementType* GetMovementType()
+		{
+			using func_t = decltype(&Actor::GetMovementType);
+			REL::Relocation<func_t> func{ REL::ID(310109) };
+			return func(this);
+		}
+
+		float CalcEquippedWeight()
+		{
+			using func_t = decltype(&Actor::CalcEquippedWeight);
+			REL::Relocation<func_t> func{ REL::ID(1561549) };
+			return func(this);
+		}
+
+		SEX GetSex()
+		{
+			using func_t = decltype(&Actor::GetSex);
+			REL::Relocation<func_t> func{ REL::ID(1216256) };
+			return func(this);
+		}
+
+		float GetMaxCarryWeight()
+		{
+			using func_t = decltype(&Actor::GetMaxCarryWeight);
+			REL::Relocation<func_t> func{ REL::ID(362323) };
+			return func(this);
+		}
+
+		void StopSneaking()
+		{
+			using func_t = decltype(&Actor::StopSneaking);
+			REL::Relocation<func_t> func{ REL::ID(564788) };
+			return func(this);
+		}
+
+		bool GetWantSprinting()
+		{
+			using func_t = decltype(&Actor::GetWantSprinting);
+			REL::Relocation<func_t> func{ REL::ID(680559) };
+			return func(this);
+		}
+		
 
 		// members
 		NiTFlags<std::uint32_t, Actor> niFlags;                              // 2D0

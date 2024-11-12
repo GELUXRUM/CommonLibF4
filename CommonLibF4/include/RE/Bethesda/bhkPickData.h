@@ -19,6 +19,13 @@ namespace RE
 			func(this);
 		}
 
+		void bhkPickData_CFilter(uint32_t a_collisionFilter, NiPoint3& a_location, NiPoint3& a_aimVector, float a_range)
+		{
+			using func_t = decltype(&bhkPickData::bhkPickData_CFilter);
+			REL::Relocation<func_t> func{ REL::ID(1464124) };
+			func(this, a_collisionFilter, a_location, a_aimVector, a_range);
+		}
+
 		void SetStartEnd(const NiPoint3& start, const NiPoint3& end)
 		{
 			using func_t = decltype(&bhkPickData::SetStartEnd);

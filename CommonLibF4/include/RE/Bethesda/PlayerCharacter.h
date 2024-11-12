@@ -381,18 +381,46 @@ namespace RE
 			return func(this, a_show, a_skipEffects);
 		}
 
-		void TogglePipBoyLight(bool a_unk)
+		void TogglePipBoyLight()
 		{
 			using func_t = decltype(&PlayerCharacter::TogglePipBoyLight);
 			REL::Relocation<func_t> func{ REL::ID(520007) };
-			return func(this, a_unk);
+			return func(this);
 		}
 
-		bool HasLOSToTarget(TESObjectREFR* a_target, bool& a_unk)
+		void Update(float a_frameDeltaMs)
+		{
+			using func_t = decltype(&PlayerCharacter::Update);
+			REL::Relocation<func_t> func{ REL::ID(263152) };
+			return func(this, a_frameDeltaMs);
+		}
+
+		void UpdateTimers(float a_vatsAdjustedFrameDeltaMs)
+		{
+			using func_t = decltype(&PlayerCharacter::UpdateTimers);
+			REL::Relocation<func_t> func{ REL::ID(1238852) };
+			return func(this, a_vatsAdjustedFrameDeltaMs);
+		}
+
+		bool HasLOSToTarget(RE::TESObjectREFR* a_target, bool a_unk)
 		{
 			using func_t = decltype(&PlayerCharacter::HasLOSToTarget);
 			REL::Relocation<func_t> func{ REL::ID(449775) };
 			return func(this, a_target, a_unk);
+		}
+
+		void FinishLevelUp()
+		{
+			using func_t = decltype(&PlayerCharacter::FinishLevelUp);
+			REL::Relocation<func_t> func{ REL::ID(194884) };
+			return func(this);
+		}
+
+		void ToggleControllerSprint()
+		{
+			using func_t = decltype(&PlayerCharacter::ToggleControllerSprint);
+			REL::Relocation<func_t> func{ REL::ID(1266044) };
+			return func(this);
 		}
 
 		// members

@@ -139,6 +139,13 @@ namespace RE
 		};
 		static_assert(sizeof(BodyMorphData) == 0x60);
 
+		bool GetMaxSpeedsForMovementType(BGSMovementType* a_movementType, Movement::MaxSpeeds& a_maxSpeeds)
+		{
+			using func_t = decltype(&TESRace::GetMaxSpeedsForMovementType);
+			REL::Relocation<func_t> func{ REL::ID(349624) };
+			return func(this, a_movementType, a_maxSpeeds);
+		}
+
 		// members
 		TESModel skeletonModel[2];                                           // 0C0
 		TESModel skeletonChargenModel[2];                                    // 120
